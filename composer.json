@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Fishpigs_Attribute_Splash_Page",
+    "type": "magento-module",
+    "license": "FishPig-EULA",
+    "homepage": "",
+    "description": "Create SEO landing pages for your product attributes.",
+    "authors": [
+    {
+        "name": "fishpig",
+        "email": "ben@fishpig.co.uk"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
