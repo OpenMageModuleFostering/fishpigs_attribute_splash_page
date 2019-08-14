@@ -8,7 +8,7 @@
 	
 	$this->startSetup();
 
-	$this->getConnection()->addColumn($this->getTable('attributesplash_group'), 'include_in_menu', " int(1) unsigned NOT NULL default 1");
+	$this->getConnection()->addColumn($this->getTable('attributeSplash/group'), 'include_in_menu', " int(1) unsigned NOT NULL default 1");
 	$this->getConnection()->addColumn($this->getTable('attributesplash_page'), 'include_in_menu', " int(1) unsigned NOT NULL default 1");
 	
 	$this->endSetup();

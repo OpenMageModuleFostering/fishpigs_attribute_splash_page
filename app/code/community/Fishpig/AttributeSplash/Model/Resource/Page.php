@@ -262,7 +262,7 @@ class Fishpig_AttributeSplash_Model_Resource_Page extends Fishpig_AttributeSplas
 		$select = $this->_getReadAdapter()
 			->select()
 				->from(array('_index' => $this->getIndexTable()), 'page_id')
-				->where('store_id=?', $storeId);
+				->where('_index.store_id=?', $storeId);
 		
 		// Join page URL Key
 		$select->join(
@@ -295,7 +295,7 @@ class Fishpig_AttributeSplash_Model_Resource_Page extends Fishpig_AttributeSplas
 			// Remove results with no group URL key
 			$select->where('_group.url_key <> ?', '');
 		}
-		
+
 		if ($results = $this->_getReadAdapter()->fetchAll($select)) {
 			if (count($results) === 1) {
 				return array_shift($results);

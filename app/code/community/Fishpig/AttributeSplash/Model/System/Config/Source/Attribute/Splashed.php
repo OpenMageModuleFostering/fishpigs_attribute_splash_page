@@ -19,7 +19,7 @@ class Fishpig_AttributeSplash_Model_System_Config_Source_Attribute_Splashed exte
 			parent::getCollection()->getSelect()
 				->distinct(true)
 				->join(
-					array('_splash_group' => Mage::getSingleton('core/resource')->getTableName('attributeSplash/group')),
+					array('_splash_group' => Mage::getResourceSingleton('attributeSplash/group')->getMainTable()),
 					'_splash_group.attribute_id=main_table.attribute_id',
 					''
 				);

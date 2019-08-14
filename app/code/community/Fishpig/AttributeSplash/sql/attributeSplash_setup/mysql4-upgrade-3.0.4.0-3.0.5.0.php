@@ -8,7 +8,7 @@
 	
 	$this->startSetup();
 
-	$this->getConnection()->addColumn($this->getTable('attributesplash_group'), 'category_id', "int(11) unsigned default NULL AFTER attribute_id");
+	$this->getConnection()->addColumn($this->getTable('attributeSplash/group'), 'category_id', "int(11) unsigned default NULL AFTER attribute_id");
 	$this->getConnection()->addColumn($this->getTable('attributesplash_page'), 'category_id', "int(11) unsigned default NULL AFTER option_id");
 
 	$this->endSetup();

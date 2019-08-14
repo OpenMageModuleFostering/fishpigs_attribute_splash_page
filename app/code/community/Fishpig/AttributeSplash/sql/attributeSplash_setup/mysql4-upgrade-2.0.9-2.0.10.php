@@ -13,9 +13,9 @@
 
 	$this->getConnection()->update($this->getTable('attributesplash_page'), array('updated_at' => now(), 'created_at' => now()), '');
 	
-	$this->getConnection()->addColumn($this->getTable('attributesplash_group'), 'created_at', " timestamp");
-	$this->getConnection()->addColumn($this->getTable('attributesplash_group'), 'updated_at', " timestamp");
+	$this->getConnection()->addColumn($this->getTable('attributeSplash/group'), 'created_at', " timestamp");
+	$this->getConnection()->addColumn($this->getTable('attributeSplash/group'), 'updated_at', " timestamp");
 
-	$this->getConnection()->update($this->getTable('attributesplash_group'), array('updated_at' => now(), 'created_at' => now()), '');
+	$this->getConnection()->update($this->getTable('attributeSplash/group'), array('updated_at' => now(), 'created_at' => now()), '');
 
 	$this->endSetup();

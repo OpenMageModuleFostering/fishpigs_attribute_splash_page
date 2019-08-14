@@ -15,7 +15,7 @@ class Fishpig_AttributeSplash_Block_Adminhtml_Group_Grid extends Mage_Adminhtml_
 		$this->setId('splash_group_grid');
 		$this->setDefaultSort('group_id');
 		$this->setDefaultDir('asc');
-		$this->setSaveParametersInSession(false);
+		$this->setSaveParametersInSession(true);
 		$this->setUseAjax(true);
 	}
 
@@ -34,7 +34,7 @@ class Fishpig_AttributeSplash_Block_Adminhtml_Group_Grid extends Mage_Adminhtml_
 					'onclick'   => "setLocation('" . $this->getUrl('*/attributeSplash_group/new') . "');",
 				))
 		);
-				
+
 		return parent::_prepareLayout();
 	}
 	

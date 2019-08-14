@@ -8,4 +8,6 @@
 	
 	$this->startSetup();
 
+	$this->getConnection()->addColumn($this->getTable('attributesplash_page'), 'custom_fields', " TEXT NOT NULL default '' AFTER `description`");
+
 	$this->endSetup();

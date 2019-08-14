@@ -5,7 +5,7 @@
 	 *
 	 */
 	 -->
-	<attributesplash_page_view>
+	<attributesplash_page_view>        
 		<reference name="head">
 			<action method="addCss"><style>css/attribute-splash.css</style></action>
 		</reference>

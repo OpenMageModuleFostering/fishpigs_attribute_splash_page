@@ -8,4 +8,15 @@
 	
 	$this->startSetup();
 
+	try {
+		Mage::getResourceModel('attributeSplash/group')->fixTables();
+	}
+	catch (Exception $e) {}
+	
+	try {
+		Mage::getResourceModel('attributeSplash/group')->fixIndexes();
+	}
+	catch (Exception $e) {}
+	
 	$this->endSetup();
+	

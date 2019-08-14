@@ -8,7 +8,7 @@
 	
 	$this->startSetup();
 
-	$this->getConnection()->dropColumn($this->getTable('attributesplash_group'), 'display_mode');
-	$this->getConnection()->addColumn($this->getTable('attributesplash_group'), 'display_mode', " varchar(40) NOT NULL default 'PRODUCTS' AFTER meta_keywords");
+	$this->getConnection()->dropColumn($this->getTable('attributeSplash/group'), 'display_mode');
+	$this->getConnection()->addColumn($this->getTable('attributeSplash/group'), 'display_mode', " varchar(40) NOT NULL default 'PRODUCTS' AFTER meta_keywords");
 
 	$this->endSetup();

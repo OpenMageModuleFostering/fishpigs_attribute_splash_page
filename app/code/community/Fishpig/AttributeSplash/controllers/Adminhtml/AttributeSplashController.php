@@ -14,6 +14,7 @@ class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Fishpi
 	 */
 	public function indexAction()
 	{
+		$this->_installTables();
 		$this->loadLayout();
 		
 		$this->_title('FishPig');
@@ -99,5 +100,22 @@ class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Fishpi
 		}
 		
 		return $this->_redirectReferer();
+	}
+	
+	/**
+	 * Ensure the Group tables are installed
+	 *
+	 * @return $this
+	**/
+	protected function _installTables()
+	{
+		try {
+			Mage::getResourceModel('attributeSplash/group')->fixTables();
+		}
+		catch (Exception $e) {
+			Mage::getSingleton('admin/session')->addError($this->__($e->getMessage()));
+		}
+		
+		return $this;
 	}
 }
