@@ -106,8 +106,18 @@ class Fishpig_AttributeSplash_Model_Observer
 		return $this;
 	}
 	
+	/**
+	 * Add support for FishPig_FSeo
+	 *
+	 * @param Varien_Event_Observer $observer
+	 * @return $this|bool
+	 */
 	public function fseoLayeredNavigationMatchEntityObserver(Varien_Event_Observer $observer)
 	{
+		if (!Mage::helper('fseo/layer')->isEntityTypeEnabled('attributeSplash_page')) {
+			return $this;
+		}
+	
 		$doubleBarrel = Mage::getStoreConfigFlag('attributeSplash/page/include_group_url_key');
 		
 		$urlKey = $observer->getEvent()->getRequestUri();	
@@ -134,7 +144,7 @@ class Fishpig_AttributeSplash_Model_Observer
 		else {
 	    	$baseUrlKey = substr($urlKey, 0, strpos($urlKey, '/'));
 	    	$groupUrlKey = null;
-	    	$pageUrlKey = null;
+	    	$pageUrlKey = $baseUrlKey;
 	    }
 
 		$splashIds = Mage::getResourceModel('attributeSplash/page')->getPageAndGroupIdByUrlKeys($pageUrlKey, $groupUrlKey);
@@ -163,6 +173,8 @@ class Fishpig_AttributeSplash_Model_Observer
 						'group_id' => $groupId,
 					)
 				)));
+		
+		Mage::helper('attributeSplash')->clearLayerRewrites();
 		
 		return $this;
 	}

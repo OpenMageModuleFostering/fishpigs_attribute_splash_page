@@ -74,4 +74,38 @@ class Fishpig_AttributeSplash_Helper_Data extends Mage_Core_Helper_Abstract
 	{
 		return Mage::getStoreConfigFlag('attributeSplash/page/include_group_url_key');
 	}
+	
+	/**
+	 * Determiner whether Fishpig_FSeo is installed
+	 *
+	 * @return bool
+	 */
+	public function isFishPigSeoInstalledAndActive()
+	{
+		return 'true' === (string)Mage::getConfig()->getNode('modules/Fishpig_FSeo/active')
+			&& Mage::helper('fseo/layer')->isEntityTypeEnabled('attributeSplash_page');
+	}
+	
+	/**
+	 * Disable the MageWorx_SeoSuite rewrites for the layered navigation
+	 *
+	 * @return $this
+	 */
+	public function clearLayerRewrites()
+	{
+		Mage::getConfig()->setNode('modules/MageWorx_SeoSuite/active', 'false', true);
+		Mage::getConfig()->setNode('global/models/catalog/rewrite/layer_filter_item', null, true);
+		Mage::getConfig()->setNode('global/models/catalog/rewrite/layer_filter_attribute', null, true);
+		Mage::getConfig()->setNode('global/models/catalog/rewrite/layer_filter_category', null, true);			
+		Mage::getConfig()->setNode('global/models/catalog_resource/rewrite/layer_filter_item', null, true);
+		Mage::getConfig()->setNode('global/models/catalog_resource_eav_mysql4/rewrite/layer_filter_item', null, true);
+		Mage::getConfig()->setNode('global/blocks/catalog/rewrite/product_list_toolbar', null, true);
+		Mage::getConfig()->setNode('global/blocks/catalog/rewrite/layer_filter_attribute', null, true);
+			
+		if ($this->isFishPigSeoInstalledAndActive()) {
+			Mage::helper('fseo/layer')->applyLayerRewrites();
+		}
+		
+		return $this;
+	}
 }

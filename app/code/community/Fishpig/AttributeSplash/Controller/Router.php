@@ -55,6 +55,8 @@ class Fishpig_AttributeSplash_Controller_Router extends Mage_Core_Controller_Var
 				$requestUri . Mage::getStoreConfig('attributeSplash/seo/url_suffix')
 			);
 
+			Mage::helper('attributeSplash')->clearLayerRewrites();
+			
 			return true;
 		}
 
@@ -77,8 +79,8 @@ class Fishpig_AttributeSplash_Controller_Router extends Mage_Core_Controller_Var
 				// URL contains / but no group key so should be single
 				return false;
 			}
-			
-			if (substr_count($requestUri, '/') > 2) {
+
+			if (substr_count($requestUri, '/') > 1) {
 				return false;
 			}
 			

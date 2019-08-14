@@ -6,7 +6,7 @@
  * @author      Ben Tideswell <help@fishpig.co.uk>
  */
 
-class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Mage_Adminhtml_Controller_Action
+class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Fishpig_AttributeSplash_Controller_Adminhtml_Abstract
 {
 	/**
 	 * Display a grid of splash groups
@@ -30,10 +30,8 @@ class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Mage_A
 	 */
 	public function groupGridAction()
 	{
-		$this->getResponse()
-			->setBody(
-				$this->getLayout()->createBlock('attributeSplash/adminhtml_group_grid')->toHtml()
-			);
+		$this->loadLayout();
+		$this->renderLayout();
 	}
 
 	/**
@@ -43,10 +41,8 @@ class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Mage_A
 	 */
 	public function pageGridAction()
 	{
-		$this->getResponse()
-			->setBody(
-				$this->getLayout()->createBlock('attributeSplash/adminhtml_page_grid')->toHtml()
-			);
+		$this->loadLayout();
+		$this->renderLayout();
 	}
 	
 	/**
@@ -62,7 +58,7 @@ class Fishpig_AttributeSplash_Adminhtml_AttributeSplashController extends Mage_A
 			->setMedium('Add-On Tab')
 			->setTemplate('large.phtml')
 			->setLimit(4)
-			->setPreferred(array('Fishpig_AttributeSplash_Addon_QuickCreate', 'Fishpig_AttributeSplash_Addon_XmlSitemap', 'Fishpig_CrossLink', 'Fishpig_AttributeSplashPro', 'Fishpig_NoBots'));
+			->setPreferred(array('Fishpig_FSeo', 'Fishpig_AttributeSplash_Addon_QuickCreate', 'Fishpig_AttributeSplash_Addon_XmlSitemap', 'Fishpig_CrossLink', 'Fishpig_AttributeSplashPro', 'Fishpig_NoBots'));
 			
 		$this->getResponse()
 			->setBody(
